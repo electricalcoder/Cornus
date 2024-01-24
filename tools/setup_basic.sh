@@ -21,10 +21,9 @@ echo "set tabstop=4" > ~/.vimrc
 
 # set up cmake
 mkdir -p /home/cmake
-pushd /home/cmake
+cd /home/cmake
 wget https://cmake.org/files/v3.19/cmake-3.19.1-Linux-x86_64.sh
 bash cmake-3.19.1-Linux-x86_64.sh --prefix=/usr --skip-license --exclude-subdir
-popd
 
 # setup git
 #git config --global user.name "ScarletGuo"
