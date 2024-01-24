@@ -22,6 +22,7 @@ cd $HOME
 git clone https://github.com/grpc/grpc
 cd grpc
 git submodule update --init --recursive
+git submodule update --recursive
 cd test/distrib/cpp/
 cp ${HOME}/Sundial-Private/tools/run_distrib_test_cmake.sh ./
 ./run_distrib_test_cmake.sh
