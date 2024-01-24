@@ -1,20 +1,20 @@
-sudo apt-get update
-sudo apt-get install -y libssl-dev
-sudo apt-get install -y software-properties-common
-sudo apt-get install -y python-software-properties
-sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-wget -O - http://llvm.org/apt/llvm-snapshot.gpg.key | sudo apt-key add -
-sudo add-apt-repository -y 'deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-4.0 main'
-sudo apt-get install -y build-essential gcc g++ clang clang++ lldb lld gdb cmake
-sudo apt-get install -y git  flex bison libnuma-dev
-sudo apt-get install -y dstat
-sudo apt-get install -y vim htop
-sudo apt-get install -y vagrant cmake curl
-sudo apt install -y libjemalloc-dev
-sudo apt install -y openjdk-8-jre-headless
-sudo apt install -y cgroup-tools
-sudo apt install -y python3-pip
-sudo apt install -y numactl
+apt-get update
+apt-get install -y libssl-dev
+apt-get install -y software-properties-common
+apt-get install -y python-software-properties
+add-apt-repository -y ppa:ubuntu-toolchain-r/test
+wget -O - http://llvm.org/apt/llvm-snapshot.gpg.key | apt-key add -
+add-apt-repository -y 'deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-4.0 main'
+apt-get install -y build-essential gcc g++ clang clang++ lldb lld gdb cmake
+apt-get install -y git  flex bison libnuma-dev
+apt-get install -y dstat
+apt-get install -y vim htop
+apt-get install -y vagrant cmake curl
+apt install -y libjemalloc-dev
+apt install -y openjdk-8-jre-headless
+apt install -y cgroup-tools
+apt install -y python3-pip
+apt install -y numactl
 pip3 install --upgrade pip
 pip3 install pandas
 echo "set tabstop=4" > ~/.vimrc
@@ -27,7 +27,7 @@ echo "set tabstop=4" > ~/.vimrc
 cd
 git clone https://github.com/redis/redis.git
 cd redis
-make
+make -j4
 cp $HOME/Sundial-Private/tools/redis.conf ./
 cd
 mkdir redis_data/
