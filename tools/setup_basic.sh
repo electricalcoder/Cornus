@@ -5,11 +5,11 @@ apt-get install -y software-properties-common
 add-apt-repository -y ppa:ubuntu-toolchain-r/test
 wget -O - http://llvm.org/apt/llvm-snapshot.gpg.key | apt-key add -
 add-apt-repository -y 'deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-4.0 main'
-apt-get install -y build-essential gcc g++ clang lldb lld gdb cmake
+apt-get install -y build-essential gcc g++ clang lldb lld gdb
 apt-get install -y git  flex bison libnuma-dev
 apt-get install -y dstat
 apt-get install -y vim htop
-apt-get install -y vagrant cmake curl
+apt-get install -y vagrant curl
 apt install -y libjemalloc-dev
 apt install -y openjdk-8-jre-headless
 apt install -y cgroup-tools
@@ -18,6 +18,13 @@ apt install -y numactl
 pip3 install --upgrade pip
 pip3 install pandas
 echo "set tabstop=4" > ~/.vimrc
+
+# set up cmake
+mkdir -p /home/cmake
+pushd /home/cmake
+wget https://cmake.org/files/v3.19/cmake-3.19.1-Linux-x86_64.sh
+bash cmake-3.19.1-Linux-x86_64.sh --prefix=/usr --skip-license --exclude-subdir
+popd
 
 # setup git
 #git config --global user.name "ScarletGuo"
