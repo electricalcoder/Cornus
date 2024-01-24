@@ -5,7 +5,7 @@ apt-get install -y python-software-properties
 add-apt-repository -y ppa:ubuntu-toolchain-r/test
 wget -O - http://llvm.org/apt/llvm-snapshot.gpg.key | apt-key add -
 add-apt-repository -y 'deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-4.0 main'
-apt-get install -y build-essential gcc g++ clang clang++ lldb lld gdb cmake
+apt-get install -y build-essential gcc g++ clang lldb lld gdb cmake
 apt-get install -y git  flex bison libnuma-dev
 apt-get install -y dstat
 apt-get install -y vim htop
