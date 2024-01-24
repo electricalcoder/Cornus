@@ -2,7 +2,6 @@
 
 # dependencies
 apt-get -y install build-essential autoconf libtool pkg-config
-apt-get -y install cmake
 apt-get -y install libgflags-dev
 apt-get -y install clang-5.0 libc++-dev
 apt update
