@@ -25,6 +25,7 @@ git submodule update --init --recursive
 git submodule update --recursive
 cd test/distrib/cpp/
 #cp ${HOME}/Sundial-Private/tools/run_distrib_test_cmake.sh ./
+export GRPC_CPP_DISTRIBTEST_BUILD_COMPILER_JOBS=64
 ./run_distrib_test_cmake.sh
 export PKG_CONFIG_PATH=/usr/local/grpc/lib/pkgconfig
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
