@@ -1,7 +1,7 @@
 apt-get update
 apt-get install -y libssl-dev
 apt-get install -y software-properties-common
-apt-get install -y python-software-properties
+#apt-get install -y python-software-properties
 add-apt-repository -y ppa:ubuntu-toolchain-r/test
 wget -O - http://llvm.org/apt/llvm-snapshot.gpg.key | apt-key add -
 add-apt-repository -y 'deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-4.0 main'
