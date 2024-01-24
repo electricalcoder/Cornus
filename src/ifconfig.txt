@@ -1,5 +1,5 @@
 # a list of servers; each on a new line
-node-0:50051
+172.17.0.2:50051
 =l
 127.0.0.1:6379 sundial-dev
 =s
