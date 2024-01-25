@@ -1,6 +1,6 @@
 #!/bin/bash
-source $HOME/Cornus/tools/setup_env.sh
-mkdir -p $HOME/Cornus/outputs/
-cd $HOME/Cornus/src
+source /home/Cornus/tools/setup_env.sh
+mkdir -p /home/Cornus/outputs/
+cd /home/Cornus/src
 make -j16 $1
 

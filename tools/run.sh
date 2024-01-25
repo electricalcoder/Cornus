@@ -1,5 +1,5 @@
 #!/bin/bash
 source setup_env.sh
-cd $HOME/Cornus/src
-mkdir -p ${HOME}/Cornus/outputs
+cd /home/Cornus/src
+mkdir -p /home/Cornus/outputs
 ./rundb $1
