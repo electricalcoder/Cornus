@@ -200,3 +200,4 @@
 #define COMPUTE_NODE                    1
 #define STORAGE_NODE                    2
 
+#define FAILURE_TIMEPOINT               0
