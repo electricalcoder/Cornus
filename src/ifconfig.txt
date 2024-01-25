@@ -1,5 +1,5 @@
 # a list of servers; each on a new line
 172.17.0.2:50051
 =l
-127.0.0.1:6379 sundial-dev
+172.17.0.3:6379 sundial-dev
 =s
