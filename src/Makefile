@@ -16,7 +16,7 @@ INCLUDE = -I. -I./benchmarks -I./concurrency_control -I./storage -I./system -I./
 
 CFLAGS += $(INCLUDE) -D NOGRAPHITE=1 -Og -g -fpermissive
 
-LDFLAGS = -Wall -L. -L./libs -pthread -g -lrt -std=c++11 -Og -ljemalloc
+LDFLAGS = -Wall -L. -L./libs -pthread -g -lrt -std=c++14 -Og -ljemalloc
 
 # for redis storage & grpc
 LDFLAGS += -L/usr/local/lib `pkg-config --libs protobuf grpc++`\
