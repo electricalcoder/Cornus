@@ -14,7 +14,7 @@ RUN echo /home/Cornus/ >> /home/Cornus/info.txt
 RUN cd /home/Cornus && DEBIAN_FRONTEND=noninteractive python3 install.py install_local 0
 RUN cd /home/Cornus && python3 install.py config_local 0
 
-RUN mkdir /run/ssh
+RUN mkdir /run/sshd
 
 CMD ["/usr/sbin/sshd", "-D"]
 
