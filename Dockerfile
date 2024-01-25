@@ -2,6 +2,8 @@
 
 FROM ubuntu:18.04
 
+RUN export DEBIAN_FRONTEND=noninteractive
+
 RUN apt update && apt install vim git net-tools emacs python3 python3-pip wget curl sudo openssh-server
 
 RUN pip3 install --upgrade pip
@@ -13,7 +15,6 @@ RUN cd Cornus
 RUN echo root > info.txt
 RUN echo /home/Cornus/ >> info.txt
 
-RUN export DEBIAN_FRONTEND=noninteractive
 RUN python3 install.py install_local 0
 RUN python3 install.py config_local 0
 
