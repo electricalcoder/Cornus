@@ -6,15 +6,13 @@ RUN DEBIAN_FRONTEND=noninteractive apt update && DEBIAN_FRONTEND=noninteractive 
 
 RUN pip3 install --upgrade pip
 
-RUN cd /home
-RUN git clone https://github.com/electricalcoder/Cornus
-RUN cd Cornus
+RUN cd /home && git clone https://github.com/electricalcoder/Cornus
 
-RUN echo root > info.txt
-RUN echo /home/Cornus/ >> info.txt
+RUN echo root > /home/Cornus/info.txt
+RUN echo /home/Cornus/ >> /home/Cornus/info.txt
 
-RUN DEBIAN_FRONTEND=noninteractive python3 install.py install_local 0
-RUN python3 install.py config_local 0
+RUN cd /home/Cornus && DEBIAN_FRONTEND=noninteractive python3 install.py install_local 0
+RUN cd /home/Cornus && python3 install.py config_local 0
 
 RUN mkdir /run/ssh
 
