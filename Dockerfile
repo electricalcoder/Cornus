@@ -19,6 +19,7 @@ RUN echo 'root:123' | chpasswd
 RUN mkdir /run/sshd
 
 RUN echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config
+RUN echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
 
 CMD ["/usr/sbin/sshd", "-D"]
 
