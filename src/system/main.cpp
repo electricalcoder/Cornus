@@ -50,12 +50,13 @@ int main(int argc, char* argv[])
     uint64_t endtime;
     SundialRequest request;
     SundialResponse response;
+    SemaphoreSync *sem;
     request.set_request_type( SundialRequest::SYS_REQ );
     // Notify other nodes the completion of the current node.
     starttime = get_sys_clock();
     for (uint32_t i = 0; i < g_num_nodes; i ++) {
       if (i == g_node_id) continue;
-        SemaphoreSync * sem = new SemaphoreSync();
+         sem = new SemaphoreSync();
         sem->incr();
         request.set_semaphore(reinterpret_cast<uint64_t>(sem));
         rpc_client->sendRequestAsync(nullptr, i, request, response);
