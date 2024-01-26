@@ -44,28 +44,6 @@ int main(int argc, char* argv[])
     pthread_create(pthread_rpc, nullptr, start_rpc_server, nullptr);
 #endif
 
-{
-    while (1) {
-    uint64_t starttime;
-    uint64_t endtime;
-    SundialRequest request;
-    SundialResponse response;
-    SemaphoreSync *sem;
-    request.set_request_type( SundialRequest::SYS_REQ );
-    // Notify other nodes the completion of the current node.
-    starttime = get_sys_clock();
-    for (uint32_t i = 0; i < g_num_nodes; i ++) {
-      if (i == g_node_id) continue;
-         sem = new SemaphoreSync();
-        sem->incr();
-        request.set_semaphore(reinterpret_cast<uint64_t>(sem));
-        rpc_client->sendRequestAsync(nullptr, i, request, response);
-    }
-    sem->wait();
-    endtime = get_sys_clock() - starttime;
-    cout << endtime / 1000 << " us" << endl;
-   }}
-
     #if LOG_DEVICE == LOG_DVC_REDIS || LOG_DEVICE == LOG_DVC_CUSTOMIZED
         // assume a shared logging but store different node's info to different key
         cout << "[Sundial] creating Redis client" << endl;
@@ -139,6 +117,27 @@ int main(int argc, char* argv[])
       rpc_client->sendRequest(i, new_request, new_response, true);
     }
 #endif
+
+{
+    while (1) {
+    uint64_t starttime;
+    uint64_t endtime;
+    SundialRequest request;
+    SundialResponse response;
+    SemaphoreSync *sem = new SemaphoreSync();
+    request.set_request_type( SundialRequest::SYS_REQ );
+    // Notify other nodes the completion of the current node.
+    starttime = get_sys_clock();
+    for (uint32_t i = 0; i < g_num_nodes; i ++) {
+      if (i == g_node_id) continue;
+        sem->incr();
+        request.set_semaphore(reinterpret_cast<uint64_t>(sem));
+        rpc_client->sendRequestAsync(nullptr, i, request, response);
+    }
+    sem->wait();
+    endtime = get_sys_clock() - starttime;
+    cout << endtime / 1000 << " us" << endl;
+   }}
 
     for (uint64_t i = 0; i < g_num_worker_threads - 1; i++)
         pthread_create(pthreads_worker[i], nullptr, start_thread, (void *)
