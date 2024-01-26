@@ -1,11 +1,11 @@
 #!/bin/bash
 
-CC_BW=10Gbit
-CS_BW=10Gbit
-DEFAULT_BW=10Gbit
-CC_LAT=100ms
-CS_LAT=100ms
-DEFAULT_LAT=100ms
+CC_BW=12Gbit
+CS_BW=12Gbit
+DEFAULT_BW=12Gbit
+CC_LAT=500us
+CS_LAT=2ms
+DEFAULT_LAT=10us
 
 tc qdisc add dev eth0 root handle 1:0 htb default 3
 for i in {2..9}; do
