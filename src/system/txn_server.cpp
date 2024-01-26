@@ -129,10 +129,7 @@ TxnManager::process_prepare_request(const SundialRequest* request,
     }
 #endif
 
-	 
-    cout << "aaaaaa" << endl;
-    INC_FLOAT_STATS(time_debug1, get_sys_clock() - starttime);
-    INC_INT_STATS(time_debug2, 1);
+    cout << get_sys_clock() - starttime << endl;
 
     return rc;
 }
