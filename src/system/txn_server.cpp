@@ -130,7 +130,8 @@ TxnManager::process_prepare_request(const SundialRequest* request,
 #endif
 
 	 
-    INC_FLOAT_STATS(time_debug1, get_sys_clock() - start);
+    INC_FLOAT_STATS(time_debug1, get_sys_clock() - starttime);
+    INC_INT_STATS(time_debug2, 1);
 
     return rc;
 }
