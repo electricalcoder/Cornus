@@ -40,8 +40,6 @@ TxnManager::process_prepare_request(const SundialRequest* request,
     SundialResponse* response) {
     uint64_t starttime = get_sys_clock();
     
-    cout << "aaaaaa" << endl;
-    
     assert(_txn_state == RUNNING);
     RC rc = RCOK;
     uint32_t num_tuples = request->tuple_data_size();
@@ -132,6 +130,7 @@ TxnManager::process_prepare_request(const SundialRequest* request,
 #endif
 
 	 
+    cout << "aaaaaa" << endl;
     INC_FLOAT_STATS(time_debug1, get_sys_clock() - starttime);
     INC_INT_STATS(time_debug2, 1);
 
