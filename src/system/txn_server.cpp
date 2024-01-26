@@ -129,7 +129,7 @@ TxnManager::process_prepare_request(const SundialRequest* request,
     }
 #endif
 
-    cout << get_sys_clock() - starttime << endl;
+    //cout << get_sys_clock() - starttime << endl;
 
     return rc;
 }
