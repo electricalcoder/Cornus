@@ -1,8 +1,8 @@
 #!/bin/bash
 
-SS_BW=12Gbit
-SC_BW=12Gbit
-DEFAULT_BW=12Gbit
+SS_BW=30Gbit
+SC_BW=30Gbit
+DEFAULT_BW=30Gbit
 SS_LAT=250us
 SC_LAT=1ms
 DEFAULT_LAT=10us
