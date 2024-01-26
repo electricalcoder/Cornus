@@ -214,9 +214,9 @@ TxnManager::process_2pc_phase2(RC rc)
         return rc;
     }
 
-    rpc_log_semaphore->incr();
     #if COMMIT_ALG == TWO_PC
         // 2pc: persistent decision
+        rpc_log_semaphore->incr();
         #if LOG_DEVICE == LOG_DVC_REDIS
         redis_client->log_async(g_node_id, get_txn_id(), rc_to_state(rc));
         #elif LOG_DEVICE == LOG_DVC_AZURE_BLOB
@@ -233,7 +233,7 @@ TxnManager::process_2pc_phase2(RC rc)
         // finish before sending out logs.
         _finish_time = get_sys_clock();
         #if LOG_DEVICE == LOG_DVC_REDIS
-        rpc_log_semaphore->incr();
+        //rpc_log_semaphore->incr();
         redis_client->log_async(g_node_id, get_txn_id(), rc_to_state(rc));
         #elif LOG_DEVICE == LOG_DVC_AZURE_BLOB
         azure_blob_client->log_async(g_node_id, get_txn_id(), rc_to_state(rc));
@@ -291,7 +291,7 @@ TxnManager::process_2pc_phase2(RC rc)
     // OPTIMIZATION: release locks as early as possible.
     // No need to wait for this log since it is optional (shared log optimization)
 #if COMMIT_ALG == ONE_PC
-    rpc_log_semaphore->wait();
+    //rpc_log_semaphore->wait();
 #endif
     _cc_manager->cleanup(rc);
     rpc_semaphore->wait();
