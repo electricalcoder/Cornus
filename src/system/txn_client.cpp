@@ -80,6 +80,7 @@ TxnManager::process_2pc_phase1()
     dependency_semaphore->wait();
 #endif
 
+#if 0
     // if the entire txn is read-write, log to remote storage
     if (!is_txn_read_only() && COMMIT_ALG != COORDINATOR_LOG) {
         string data = "[LSN] placehold:" + string(num_local_write *
@@ -109,6 +110,7 @@ TxnManager::process_2pc_phase1()
         #endif
     #endif // COMMIT_ALG == ONE_PC
     }
+    #endif
 
     SundialRequest::NodeData * participant;
     int message_sent = 0;
