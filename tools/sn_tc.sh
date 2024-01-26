@@ -3,8 +3,8 @@
 SS_BW=12Gbit
 SC_BW=12Gbit
 DEFAULT_BW=12Gbit
-SS_LAT=500us
-SC_LAT=2ms
+SS_LAT=250us
+SC_LAT=1ms
 DEFAULT_LAT=10us
 
 tc qdisc add dev eth0 root handle 1:0 htb default 3
