@@ -111,6 +111,8 @@ TxnManager::process_2pc_phase1()
     #endif // COMMIT_ALG == ONE_PC
     }
     #endif
+    
+    uint64_t start_time = get_sys_clock();
 
     SundialRequest::NodeData * participant;
     int message_sent = 0;
@@ -158,6 +160,8 @@ TxnManager::process_2pc_phase1()
 
     // profile: # prepare phase
     INC_INT_STATS(num_prepare, 1);
+    
+    cout << "fuck1 " << get_sys_clock() - start_time << endl;
 
     // wait for log if the txn is read/write
     // if coodinator log, will wait for data logging in next stage
@@ -166,6 +170,8 @@ TxnManager::process_2pc_phase1()
 
     // wait for vote
     rpc_semaphore->wait();
+    
+    cout << "fuck2 " << get_sys_clock() - start_time << endl;
     _txn_state = PREPARED;
     return _decision;
 }
