@@ -46,6 +46,8 @@ int main(int argc, char* argv[])
 
 {
     while (1) {
+    uint64_t starttime;
+    uint64_t endtime;
     SundialRequest request;
     SundialResponse response;
     request.set_request_type( SundialRequest::SYS_REQ );
