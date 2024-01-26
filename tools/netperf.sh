@@ -19,7 +19,7 @@ done
 for i in $(seq 2 10); do
     echo ====================================================
     for j in $(seq 2 10); do	
-    	bw=$(ssh 172.17.0.$i iperf -c 172.17.0.$j | awk 'BEGIN {FS="[=]|[ ]"} NR==7 {print $7}')
+    	bw=$(ssh 172.17.0.$i iperf -t 2 -c 172.17.0.$j | awk 'BEGIN {FS="[=]|[ ]"} NR==7 {print $12}')
 	echo bw 172.17.0.$i to 172.17.0.$j: $bw Gbps
     done
 done
