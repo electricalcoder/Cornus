@@ -12,7 +12,9 @@ done
 
 echo Measure BW...
 for i in $(seq 2 10); do
-    ssh 172.17.0.$i iperf -s &
+    echo launch iperf server on .$i
+    ssh 172.17.0.$i pkill iperf
+    ssh 172.17.0.$i pkill iperf iperf -s &
 done
 for i in $(seq 2 10); do
     echo ====================================================
