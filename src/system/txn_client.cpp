@@ -212,7 +212,7 @@ TxnManager::process_2pc_phase2(RC rc)
         }
     }
     #endif
-    remote_readonly = is_txn_read_only();
+    bool remote_readonly = is_txn_read_only();
     if (remote_readonly) { // no logging and remote message at all
         _finish_time = get_sys_clock();
         _cc_manager->cleanup(rc);
