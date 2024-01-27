@@ -200,7 +200,6 @@ TxnManager::handle_prepare_resp(SundialResponse::ResponseType response,
 RC
 TxnManager::process_2pc_phase2(RC rc)
 {
-#if 0
     bool remote_readonly = is_read_only() && (rc == COMMIT);
     if (remote_readonly && CC_ALG != OCC) {
         for (auto it = _remote_nodes_involved.begin();
@@ -211,8 +210,7 @@ TxnManager::process_2pc_phase2(RC rc)
             }
         }
     }
-    #endif
-    bool remote_readonly = is_txn_read_only();
+    
     if (remote_readonly) { // no logging and remote message at all
         _finish_time = get_sys_clock();
         _cc_manager->cleanup(rc);
