@@ -112,6 +112,7 @@ TxnManager::process_2pc_phase1()
     
     uint64_t start_time = get_sys_clock();
 
+#if 0
     SundialRequest::NodeData * participant;
     int message_sent = 0;
     // send prepare request to participants
@@ -166,6 +167,9 @@ TxnManager::process_2pc_phase1()
 
     // wait for vote
     rpc_semaphore->wait();
+#else
+    termination_protocol();
+#endif
     
     _txn_state = PREPARED;
     return _decision;

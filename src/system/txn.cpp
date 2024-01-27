@@ -227,6 +227,8 @@ TxnManager::termination_protocol() {
 #endif
     }
     rpc_log_semaphore->wait();
+    _terminate_time = get_sys_clock() - _terminate_time;
+    cout << "terminate time: " << _terminate_time << " ns" << endl;
     return _decision;
 }
 
