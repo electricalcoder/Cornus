@@ -91,7 +91,9 @@ void QueryYCSB::gen_requests() {
     _is_all_remote_readonly = true;
     uint64_t table_size = g_synth_table_size;
     bool readonly = glob_manager->rand_double() < g_readonly_perc;
-    INC_INT_STATS(int_debug4, 1);
+    if (readonly) {
+    	INC_INT_STATS(int_debug4, 1);
+    }
     for (uint32_t tmp = 0; tmp < g_req_per_query; tmp ++) {
         RequestYCSB * req = &_requests[_request_cnt];
 
