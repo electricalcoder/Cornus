@@ -4,6 +4,7 @@
 #include "ycsb.h"
 #include "table.h"
 #include "manager.h"
+#include "stats.h"
 
 uint64_t QueryYCSB::the_n = 0;
 double QueryYCSB::denom = 0;
@@ -89,6 +90,8 @@ void QueryYCSB::gen_requests() {
     bool has_remote = false;
     _is_all_remote_readonly = true;
     uint64_t table_size = g_synth_table_size;
+    bool readonly = glob_manager->rand_double() < g_readonly_perc;
+    INC_INT_STATS(int_debug4, 1);
     for (uint32_t tmp = 0; tmp < g_req_per_query; tmp ++) {
         RequestYCSB * req = &_requests[_request_cnt];
 
@@ -108,8 +111,6 @@ void QueryYCSB::gen_requests() {
         #endif
         uint64_t primary_key = row_id * g_num_nodes + node_id;
         M_ASSERT(row_id < table_size, "row_id=%ld\n", row_id);
-        bool readonly = (row_id == 0)? false :
-                        (int(row_id * g_readonly_perc) > int((row_id - 1) * g_readonly_perc));
         if (readonly)
             req->rtype = RD;
         else {
